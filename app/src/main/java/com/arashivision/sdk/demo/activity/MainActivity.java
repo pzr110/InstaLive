@@ -18,7 +18,7 @@ public class MainActivity extends BaseObserveCameraActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
+        BarUtils.setStatusBarColor(this, Color.TRANSPARENT); // 沉浸式
 
         checkStoragePermission();
 

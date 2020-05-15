@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn_normal_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Normal Capture"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_hdr_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HDR Capture"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_interval_shooting_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Interval Capture"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_interval_shooting_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Stop Interval Capture"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_normal_record_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Normal Record"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_normal_record_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Stop Normal Record"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_hdr_record_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start HDR Record"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_hdr_record_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Stop HDR Record"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_timelapse_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start TimeLapse"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_timelapse_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Stop TimeLapse"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_capture_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_capture_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_capture_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+</LinearLayout>

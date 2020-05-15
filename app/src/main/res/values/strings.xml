@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SDK_Demo</string>
+
+    <string name="str_company">G CUBE</string>
+    <string name="str_live">直播</string>
+    <string name="str_help_hint">请先使用数据线将相机连接到手机</string>
+</resources>

@@ -8,8 +8,8 @@
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:layout_marginTop="17dp"
+        android:padding="15dp"
         android:src="@drawable/ic_back_white" />
 
     <TextView
@@ -299,5 +299,22 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/shape_black_circle">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/img_voice" />
+    </LinearLayout>
 
 </RelativeLayout>

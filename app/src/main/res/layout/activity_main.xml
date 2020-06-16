@@ -16,7 +16,6 @@
         app:indicatorColor="@color/color_F85131"
         app:indicatorName="BallSpinFadeLoaderIndicator" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

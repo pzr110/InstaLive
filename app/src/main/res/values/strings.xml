@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">SDK_Demo</string>
+    <string name="app_name">VR直播看房</string>
 
     <string name="str_company">G CUBE</string>
     <string name="str_live">直播</string>
     <string name="str_help_hint">请先使用数据线将相机连接到手机</string>
+    <string name="str_order">预约列表</string>
+    <string name="str_name">姓名</string>
 </resources>

@@ -3,20 +3,46 @@ package com.arashivision.sdk.demo.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.arashivision.sdk.demo.R;
+import com.arashivision.sdk.demo.utils.bean.Data;
+import com.arashivision.sdk.demo.utils.bean.OrderBean;
+import com.arashivision.sdk.demo.utils.bean.TokenBean;
+import com.arashivision.sdk.demo.utils.net.Api;
+import com.arashivision.sdk.demo.utils.net.BaseSubscriber;
 import com.arashivision.sdkcamera.camera.InstaCameraManager;
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.squareup.haha.perflib.Main;
+import com.wang.avi.AVLoadingIndicatorView;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 
+import java.util.HashMap;
+import java.util.List;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class MainActivity extends BaseObserveCameraActivity {
+
+    private AVLoadingIndicatorView mAvi;
+    private String mOrderId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        mOrderId = intent.getStringExtra("OrderId");
+
+        mAvi = findViewById(R.id.avi);
+        mAvi.bringToFront();
+        mAvi.hide();
 
         BarUtils.setStatusBarColor(this, Color.TRANSPARENT); // 沉浸式
 
@@ -39,7 +65,17 @@ public class MainActivity extends BaseObserveCameraActivity {
         });
 
         findViewById(R.id.iv_live).setOnClickListener(v -> {
-            InstaCameraManager.getInstance().openCamera(InstaCameraManager.CONNECT_TYPE_USB);
+            mAvi.show();
+
+            int cameraConnectedType = InstaCameraManager.getInstance().getCameraConnectedType();
+
+            if (cameraConnectedType == -1) {
+                InstaCameraManager.getInstance().openCamera(InstaCameraManager.CONNECT_TYPE_USB);
+            } else if (cameraConnectedType == 1) {
+//                startActivity(new Intent(MainActivity.this, LiveActivity.class));
+                startLiveActivity();
+            }
+
         });
 
         findViewById(R.id.btn_close_camera).setOnClickListener(v -> {
@@ -55,7 +91,8 @@ public class MainActivity extends BaseObserveCameraActivity {
         });
 
         findViewById(R.id.btn_live).setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, LiveActivity.class));
+//            startActivity(new Intent(MainActivity.this, LiveActivity.class));
+            startLiveActivity();
         });
 
         findViewById(R.id.btn_osc).setOnClickListener(v -> {
@@ -75,6 +112,7 @@ public class MainActivity extends BaseObserveCameraActivity {
         });
     }
 
+
     private void checkStoragePermission() {
         AndPermission.with(this)
                 .runtime()
@@ -89,7 +127,17 @@ public class MainActivity extends BaseObserveCameraActivity {
                     finish();
                 })
                 .start();
+
     }
+
+    private void startLiveActivity() {
+
+
+        Intent intent = new Intent(MainActivity.this, LiveActivity.class);
+        intent.putExtra("OrderIdA", mOrderId);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onCameraStatusChanged(boolean enabled) {
@@ -103,7 +151,10 @@ public class MainActivity extends BaseObserveCameraActivity {
         if (enabled) {
             Toast.makeText(this, "相机已连接", Toast.LENGTH_SHORT).show();
 //            findViewById(R.id.btn_live).setOnClickListener(v -> {
-                startActivity(new Intent(MainActivity.this, LiveActivity.class));
+            mAvi.hide();
+
+//            startActivity(new Intent(MainActivity.this, LiveActivity.class));
+            startLiveActivity();
 //            });
         } else {
             Toast.makeText(this, "相机已断开", Toast.LENGTH_SHORT).show();
@@ -113,6 +164,7 @@ public class MainActivity extends BaseObserveCameraActivity {
     @Override
     public void onCameraConnectError() {
         super.onCameraConnectError();
+        mAvi.hide();
         Toast.makeText(this, "相机连接失败", Toast.LENGTH_SHORT).show();
     }
 

@@ -17,6 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
         maven {
             url 'http://nexus.arashivision.com:9999/repository/maven-public/'
             credentials {
